@@ -2,7 +2,7 @@ import sys
 from typing import Optional
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtGui import QFontDatabase
-from design2 import Ui_MainWindow
+from design import Ui_MainWindow
 from secwin import Equations
 from operator import add, sub, mul, truediv
 
@@ -20,8 +20,8 @@ default_entry_font_size = 40  # обычные размеры шрифта дл�
 
 
 class Calculator(QMainWindow):
-    def __init__(self): #конструктор класса,  блок инструкций
-        super(Calculator, self).__init__() #связующий получение доступа из класса наследника к методам класса-родителя
+    def __init__(self):
+        super(Calculator, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self) #инициализация дизайна
         self.entry_max_len = self.ui.lineEdit.maxLength()
@@ -133,10 +133,10 @@ class Calculator(QMainWindow):
             self.ui.label.clear()
             self.adjust_entry_font_size()
 
-    @staticmethod  # отдельный, независимый класс (без ссылок и т.п)
-    def remove_trailing_zeros(num: str) -> str:  # функция с передачей строки и получение тоже строки
-        n = str(float(num))  # привидение сначала к фолт, потом к стрнг, нужно для обрезания часть нулей
-        return n[:-2] if n[-2:] == '.0' else n  # возврат среза строки без двух последн симв, если они равны .0
+    @staticmethod
+    def remove_trailing_zeros(num: str) -> str:
+        n = str(float(num))
+        return n[:-2] if n[-2:] == '.0' else n
 
     def get_entry_num(self) -> int | float:  # получ числа из поля ввода
         entry = self.ui.lineEdit.text().strip('.')  # созд перем и обрезание точки
