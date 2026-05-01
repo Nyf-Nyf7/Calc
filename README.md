@@ -42,7 +42,7 @@ The calculator is implemented using PyQt5 and includes:
 
 ```bash
 git clone https://github.com/Nyf-Nyf7/Calc.git
-cd Calc-main
+cd Calc
 ```
 
 ### 2. Install dependencies
